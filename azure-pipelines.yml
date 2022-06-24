@@ -14,7 +14,7 @@ stages:
   jobs:
     - job: maven_test
       displayName: do maven test
-      container: maven:3.8.6-jdk-11
+      container: maven:3.8.6-jdk-17
       steps:
       - script: mvn clean test
 - stage: build
