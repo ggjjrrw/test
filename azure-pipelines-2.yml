@@ -1,0 +1,28 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+stages:
+- stage: test
+  jobs:
+    - job: maven_test
+      displayName: do maven test
+      container: maven:3.8.6-jdk-11
+      steps:
+      - script: mvn clean test
+    - job: after_test
+      displayName: do after test
+      container: maven:3.8.6-jdk-11
+      steps:
+      - script: echo "after test"
+- stage: build
+  jobs:
+  - job: maven_build
+    displayName: do maven build
+    container: maven:3.8.6-jdk-11
+    steps:
+    - script: mvn clean test
