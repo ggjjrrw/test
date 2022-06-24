@@ -18,7 +18,7 @@ stages:
       steps:
       - script: mvn clean test
     - job: after_test
-      dependsOn: maven_test
+      displayName: do after test
       container: maven:3.8.6-jdk-11
       steps:
       - script: echo "after test"
