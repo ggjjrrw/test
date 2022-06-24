@@ -9,14 +9,18 @@ trigger:
 pool:
   name: default
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+- stage: test
+  jobs:
+    - job: maven-test
+      displayName: do maven test
+      container: maven:3.8.6-jdk-11
+      steps:
+      - script: mvn clean test
+- stage: build
+  jobs:
+  - job: maven-build
+    displayName: do maven build
+    container: maven:3.8.6-jdk-11
+    steps:
+    - script: mvn clean test
