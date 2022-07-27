@@ -22,11 +22,11 @@ stages:
       container: maven:3.8.6-jdk-11
       steps:
       - script: echo "after test"
+      - script: exit 1
 - stage: build
   jobs:
   - job: maven_build
     displayName: do maven build
     container: maven:3.8.6-jdk-11
     steps:
-    - script: mvn clean test
-    - script: exit 1
+    - script: mvn clean package
