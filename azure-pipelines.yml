@@ -21,8 +21,9 @@ stages:
       displayName: do after test
       container: maven:3.8.6-jdk-11
       steps:
-      - script: echo "after test"
+      - script: echo "after test1"
       - script: exit 1
+      - script: echo "after test2"
 - stage: build
   jobs:
   - job: maven_build
