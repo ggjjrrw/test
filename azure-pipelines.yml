@@ -23,7 +23,11 @@ stages:
       displayName: do maven test
       container: maven:3.8.6-jdk-11
       steps:
-      - script: mvn clean test
+      - script: echo "maven test"
+    - job: condition_test
+      displayName: condition test
+      dependsOn: maven_test
+      condition: failed()
 - stage: build
   jobs:
   - job: maven_build
