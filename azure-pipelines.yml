@@ -12,11 +12,6 @@ pool:
 stages:
 - stage: test
   jobs:
-    - job: maven_test
-      displayName: do maven test
-      container: maven:3.8.6-jdk-11
-      steps:
-      - script: mvn clean test
     - job: after_test
       displayName: do after test
       container: maven:3.8.6-jdk-11
@@ -24,6 +19,11 @@ stages:
       - script: echo "after test1"
       - script: exit 1
       - script: echo "after test2"
+    - job: maven_test
+      displayName: do maven test
+      container: maven:3.8.6-jdk-11
+      steps:
+      - script: mvn clean test
 - stage: build
   jobs:
   - job: maven_build
