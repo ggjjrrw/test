@@ -27,7 +27,6 @@ stages:
     - job: condition_test
       displayName: condition test
       dependsOn: maven_test
-      condition: failed()
 - stage: build
   jobs:
   - job: maven_build
