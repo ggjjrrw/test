@@ -19,6 +19,7 @@ stages:
         timeoutInMinutes: 5
         inputs:
           notifyUsers: 'ggjjrrw@sina.com'
+          instructions: "Hi, please validate"
     - job: after_test
       displayName: do after test
       container: maven:3.8.6-jdk-11
@@ -26,11 +27,13 @@ stages:
       - script: echo "after test1"
       - script: exit 1
       - script: echo "after test2"
+      dependsOn: manual_approve
     - job: maven_test
       displayName: do maven test
       container: maven:3.8.6-jdk-11
       steps:
       - script: echo "maven test"
+      dependsOn: manual_approve
     - job: condition_test
       displayName: condition test
       dependsOn: maven_test
