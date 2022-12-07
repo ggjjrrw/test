@@ -16,6 +16,7 @@ stages:
       displayName: manual_approve
       steps:
       - task: ManualValidation@0
+        timeoutInMinutes: 5
         inputs:
           notifyUsers: 'ggjjrrw@sina.com'
     - job: after_test
