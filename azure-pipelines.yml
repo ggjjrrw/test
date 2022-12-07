@@ -12,7 +12,7 @@ pool:
 stages:
 - stage: test
   jobs:
-    - job: manual-approve
+    - job: manual_approve
       displayName: manual_approve
       steps:
       - task: ManualValidation@0
