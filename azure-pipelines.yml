@@ -16,6 +16,9 @@ stages:
       displayName: do after test
       container: maven:3.8.6-jdk-11
       steps:
+      - task: ManualValidation@0
+        inputs:
+          notifyUsers: 'ggjjrrw@sina.com'
       - script: echo "after test1"
       - script: exit 1
       - script: echo "after test2"
