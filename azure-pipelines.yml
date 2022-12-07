@@ -12,13 +12,16 @@ pool:
 stages:
 - stage: test
   jobs:
-    - job: after_test
-      displayName: do after test
-      container: maven:3.8.6-jdk-11
+    - job: manual-approve
+      displayName: manual approve
       steps:
       - task: ManualValidation@0
         inputs:
           notifyUsers: 'ggjjrrw@sina.com'
+    - job: after_test
+      displayName: do after test
+      container: maven:3.8.6-jdk-11
+      steps:
       - script: echo "after test1"
       - script: exit 1
       - script: echo "after test2"
