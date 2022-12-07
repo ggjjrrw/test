@@ -20,6 +20,7 @@ stages:
         inputs:
           notifyUsers: 'ggjjrrw@sina.com'
           instructions: "Hi, please validate"
+      pool: server
     - job: after_test
       displayName: do after test
       container: maven:3.8.6-jdk-11
