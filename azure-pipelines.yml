@@ -13,7 +13,7 @@ stages:
 - stage: test
   jobs:
     - job: manual-approve
-      displayName: manual approve
+      displayName: manual_approve
       steps:
       - task: ManualValidation@0
         inputs:
