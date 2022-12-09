@@ -13,7 +13,7 @@ stages:
 - stage: test
   jobs:
     - job: manual_approve
-      displayName: manual_approve
+      displayName: 你好 feai
       steps:
       - task: ManualValidation@0
         timeoutInMinutes: 5
